@@ -1,5 +1,7 @@
 import Image from "next/image";
 import getPosts from "@/server/actions/get-posts";
+import createPost from "@/server/actions/create-post";
+import PostButton from "@/components/post-button";
 
 export default async function Home() {
   const { error, success } = await getPosts();
@@ -15,6 +17,11 @@ export default async function Home() {
           <h1>{post.title}</h1>
         </div>
       ))}
+
+      <form action={createPost}>
+        <input className="bg-black text-white" type="text" name="title" placeholder="Title" />
+        <PostButton/> 
+      </form>
 
       <h1>Welcome to Next.js</h1>
       {Date.now()}
