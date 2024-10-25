@@ -6,3 +6,6 @@
 
 ## Running the App
   - Dev environment: run `pnpm dev` then open your browser to [http://localhost:3000](http://localhost:3000)
+
+## Running the Database
+  - Run database using Drizzle Studio with `pnpm drizzle-kit studio` then visit [https://local.drizzle.studio/](https://local.drizzle.studio/)
