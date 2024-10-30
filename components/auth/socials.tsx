@@ -9,6 +9,7 @@ export const Socials = () => {
   return (
     <div className="flex flex-col items-center w-full gap-4">
       <Button
+        variant={"outline"}
         className="flex gap-4 w-full"
         onClick={() => signIn("google", {
         redirect: false,
@@ -18,6 +19,7 @@ export const Socials = () => {
         <FcGoogle className="w-5 h-5" />
         </Button>
       <Button
+        variant={"outline"}
         className="flex gap-4 w-full"
         onClick={() => signIn("github", {
         redirect: false,

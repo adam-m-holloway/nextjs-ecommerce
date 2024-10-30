@@ -10,7 +10,7 @@ export default async function Navigation() {
     <header className="py-8">
       <nav>
         <ul className="flex justify-between">
-          <li>Logo</li>
+          <li><Link href="/">Home</Link></li>
           {!session ? (
             <li>
               <Button asChild>

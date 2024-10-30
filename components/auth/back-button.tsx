@@ -9,9 +9,9 @@ interface BackButtonProps {
 }
 
 export const BackButton = ({ href, label }: BackButtonProps) => (
-  <Button variant="secondary">
+  <Button asChild variant={"link"} className="font-medium w-full">
     <Link aria-label={label} href={href}>
-        {label}
+      {label}
     </Link>
   </Button>
 )
