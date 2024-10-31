@@ -9,6 +9,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginSchema } from "@/types/login-schema";
 import Link from "next/link";
 import * as z from "zod";
+import { emailSignIn } from "@/server/actions/email-signin";
+import { useAction } from 'next-safe-action/hooks';
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export const LoginForm = () => {
   const form = useForm({
@@ -19,8 +23,16 @@ export const LoginForm = () => {
     }
   });
 
+  const [error, setError] = useState("")
+
+  const { execute, status, } = useAction(emailSignIn, {
+    onSuccess(data) {
+      console.log("data:", data);
+    }
+  })
+
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    console.log("values:", values);
+    execute(values)
   }
 
   return (
@@ -66,7 +78,7 @@ export const LoginForm = () => {
                 <Link href="/auth/reset">Forgot your password</Link>
               </Button>
             </div>
-            <Button type="submit" className="w-full my-2">
+            <Button type="submit" className={cn('w-full', status === 'executing' ? 'animate-pulse' : "")}>
               Login
             </Button>
 
