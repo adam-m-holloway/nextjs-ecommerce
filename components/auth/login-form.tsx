@@ -1,16 +1,24 @@
-'use client'
+"use client";
 
-import { AuthCard } from "./auth-card"
-import { Form, FormItem, FormField, FormControl, FormLabel, FormDescription, FormMessage } from '@/components/ui/form';
+import { AuthCard } from "./auth-card";
+import {
+  Form,
+  FormItem,
+  FormField,
+  FormControl,
+  FormLabel,
+  FormDescription,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "@/types/login-schema";
 import Link from "next/link";
-import * as z from "zod";
+import { z } from "zod";
 import { emailSignIn } from "@/server/actions/email-signin";
-import { useAction } from 'next-safe-action/hooks';
+import { useAction } from "next-safe-action/hooks";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
@@ -19,21 +27,23 @@ export const LoginForm = () => {
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: "",
-      password: ""
-    }
+      password: "",
+    },
   });
 
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const { execute, status, } = useAction(emailSignIn, {
-    onSuccess(data) {
-      console.log("data:", data);
-    }
-  })
+  const { execute, status } = useAction(emailSignIn, {
+    onSuccess({ data }) {
+      if (data?.error) setError(data.error);
+      if (data?.success) setSuccess(data.success);
+    },
+  });
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    execute(values)
-  }
+    execute(values);
+  };
 
   return (
     <AuthCard
@@ -53,13 +63,18 @@ export const LoginForm = () => {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="myname@example.com" type="email" autoComplete="email" />
+                      <Input
+                        {...field}
+                        placeholder="myname@example.com"
+                        type="email"
+                        autoComplete="email"
+                      />
                     </FormControl>
                     <FormDescription />
                     <FormMessage />
                   </FormItem>
                 )}
-                />
+              />
               <FormField
                 control={form.control}
                 name="password"
@@ -67,24 +82,36 @@ export const LoginForm = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="**********" type="password" autoComplete="current-password" />
+                      <Input
+                        {...field}
+                        placeholder="**********"
+                        type="password"
+                        autoComplete="current-password"
+                      />
                     </FormControl>
                     <FormDescription />
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              <FormSuccess message={success} />
+              <FormError message={error} />
               <Button size={"sm"} variant={"link"} asChild>
                 <Link href="/auth/reset">Forgot your password</Link>
               </Button>
             </div>
-            <Button type="submit" className={cn('w-full', status === 'executing' ? 'animate-pulse' : "")}>
+            <Button
+              type="submit"
+              className={cn(
+                "w-full",
+                status === "executing" ? "animate-pulse" : ""
+              )}
+            >
               Login
             </Button>
-
           </form>
         </Form>
       </div>
     </AuthCard>
-  )
-}
+  );
+};

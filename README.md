@@ -10,6 +10,7 @@
   - [Zod](https://zod.dev/)
   - [Tailwind CSS](https://tailwindcss.com/)
   - [shadcn/ui](https://ui.shadcn.com/)
+  - [Resend](https://resend.com/)
 
 
 ## Install

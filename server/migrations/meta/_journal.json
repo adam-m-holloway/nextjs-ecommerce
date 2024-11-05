@@ -8,6 +8,48 @@
       "when": 1730128141048,
       "tag": "0000_colorful_rocket_raccoon",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1730722078453,
+      "tag": "0001_early_prodigy",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1730722128497,
+      "tag": "0002_aromatic_karnak",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1730723390796,
+      "tag": "0003_nosy_johnny_blaze",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1730726207983,
+      "tag": "0004_giant_zarda",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1730726409253,
+      "tag": "0005_motionless_purple_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1730801819051,
+      "tag": "0006_mature_chamber",
+      "breakpoints": true
     }
   ]
 }
