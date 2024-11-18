@@ -4,9 +4,9 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { verifyEmailToken } from "@/server/actions/tokens";
-import { AuthCard } from "./auth-card";
-import { FormSuccess } from "./form-success";
-import { FormError } from "./form-error";
+import { AuthCard } from "./AuthCard";
+import { FormSuccess } from "./FormSuccess";
+import { FormError } from "./FormError";
 
 export const EmailVerificationForm = () => {
   const token = useSearchParams().get("token");

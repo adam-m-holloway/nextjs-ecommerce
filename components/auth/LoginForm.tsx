@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthCard } from "./auth-card";
+import { AuthCard } from "./AuthCard";
 import {
   Form,
   FormItem,
@@ -21,8 +21,8 @@ import { emailSignIn } from "@/server/actions/email-signin";
 import { useAction } from "next-safe-action/hooks";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { FormSuccess } from "./form-success";
-import { FormError } from "./form-error";
+import { FormSuccess } from "./FormSuccess";
+import { FormError } from "./FormError";
 
 export const LoginForm = () => {
   const form = useForm({

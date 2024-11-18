@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import Navigation from "@/components/navigation/navigation"; 
+import Navigation from "@/components/navigation/Navigation";
 import { cn } from "@/lib/utils";
 
 const geistSans = localFont({
@@ -29,7 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn("px-6 md:px-12 max-w-7xl mx-auto", `${geistSans.variable} ${geistMono.variable} antialiased`)}
+        className={cn(
+          "px-6 md:px-12 max-w-7xl mx-auto",
+          `${geistSans.variable} ${geistMono.variable} antialiased`
+        )}
       >
         <Navigation />
         {children}

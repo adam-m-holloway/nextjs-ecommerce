@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthCard } from "./auth-card";
+import { AuthCard } from "./AuthCard";
 import {
   Form,
   FormItem,
@@ -21,8 +21,8 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { RegisterSchema } from "@/types/register-schema";
 import { emailRegister } from "@/server/actions/email-register";
-import { FormSuccess } from "./form-success";
-import { FormError } from "./form-error";
+import { FormSuccess } from "./FormSuccess";
+import { FormError } from "./FormError";
 
 export const RegisterForm = () => {
   const form = useForm<z.infer<typeof RegisterSchema>>({
