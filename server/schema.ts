@@ -19,22 +19,22 @@ export const users = pgTable("user", {
     .$defaultFn(() => createId()),
   name: text("name"),
   email: text("email").notNull(),
-  emailVerified: timestamp("emailVerified", { mode: "date" }),
+  email_verified: timestamp("email_verified", { mode: "date" }),
   password: text("password"),
   image: text("image"),
-  twoFactorEnabled: boolean("twoFactorEnabled").default(false),
+  two_factor_enabled: boolean("two_factor_enabled").default(false),
   role: RoleEnum("roles").default("user"),
 });
 
 export const accounts = pgTable(
   "account",
   {
-    userId: text("userId")
+    user_id: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     type: text("type").$type<AdapterAccountType>().notNull(),
     provider: text("provider").notNull(),
-    providerAccountId: text("providerAccountId").notNull(),
+    provider_account_id: text("provider_account_id").notNull(),
     refresh_token: text("refresh_token"),
     access_token: text("access_token"),
     expires_at: integer("expires_at"),
@@ -45,7 +45,7 @@ export const accounts = pgTable(
   },
   (account) => ({
     compoundKey: primaryKey({
-      columns: [account.provider, account.providerAccountId],
+      columns: [account.provider, account.provider_account_id],
     }),
   })
 );

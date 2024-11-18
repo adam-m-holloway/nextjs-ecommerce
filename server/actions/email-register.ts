@@ -22,7 +22,7 @@ export const emailRegister = actionClient
     });
 
     if (existingUser) {
-      if (!existingUser.emailVerified) {
+      if (!existingUser.email_verified) {
         const verificationToken = await generateEmailVerificationToken(email);
         await sendVerificationEmail(
           verificationToken[0].email,
